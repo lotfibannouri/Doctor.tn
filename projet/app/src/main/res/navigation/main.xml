@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/fp">
+
+    <fragment
+        android:id="@+id/fp"
+        android:name="com.example.cmproject.FichePatientFragment"
+        android:label="fiche_patient"
+        tools:layout="@layout/fragment_fiche_patient" />
+    <fragment
+        android:id="@+id/cp"
+        android:name="com.example.cmproject.ConsultationPatientFragment"
+        android:label="consultation_patient"
+        tools:layout="@layout/fragment_consultation_patient" />
+    <fragment
+        android:id="@+id/rv"
+        android:name="com.example.cmproject.RendezVousFragment"
+        android:label="rendez_vous"
+        tools:layout="@layout/fragment_rendez_vous" />
+</navigation>
