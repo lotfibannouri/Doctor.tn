@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/cp"
+        android:icon="@drawable/conspatient"
+        android:title="Consultation Patient" />
+    <item
+        android:id="@+id/fp"
+        android:icon="@drawable/fiche"
+        android:title="Fiche Patient" />
+    <item
+        android:id="@+id/rv"
+        android:title="Prendre Rendez-vous"
+        android:icon="@drawable/fichepat"
+        />
+</menu>
