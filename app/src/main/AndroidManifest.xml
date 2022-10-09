@@ -10,7 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CMProject">
         <activity
+            android:name=".CodeVerification"
+            android:exported="false" />
+        <activity
+            android:name=".Inscription"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

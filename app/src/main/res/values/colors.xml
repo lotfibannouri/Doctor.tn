@@ -7,7 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorWhite">#FFFFFFFF</color>
+    <color name="BlueLogo">#28AADC</color>
+    <color name="GreenLogo">#64EBB6</color>
+    <color name="MarrineLogo">#183E9F</color>
     <color name="color_Doctor1">#28a9dc</color>
-
 </resources>
