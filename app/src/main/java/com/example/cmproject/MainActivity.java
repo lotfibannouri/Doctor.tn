@@ -24,9 +24,12 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mAuth= FirebaseAuth.getInstance() ;
 
     }
 
@@ -70,13 +75,23 @@ public class MainActivity extends AppCompatActivity {
         {
             case R.id.app_log_out:
 
-               Intent intent = new Intent( MainActivity .this,Login.class);
-               startActivity(intent);
+              /* Intent intent = new Intent( MainActivity .this,Login.class);
+               startActivity(intent);*/
+                mAuth.signOut();
+                Intent intent = new Intent( MainActivity .this,Login.class);
+                startActivity(intent);
                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = mAuth.getCurrentUser() ;
+        if(user == null)
+        {
+            startActivity(new Intent (MainActivity.this ,Login.class));
+        }
+    }
 }

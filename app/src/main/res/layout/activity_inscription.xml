@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Login">
+   tools:context=".Inscription">
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:hint="Nom et prénom"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:maxLines="1"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
@@ -183,8 +183,7 @@
         android:textAllCaps="false"
         android:layout_marginTop="40dp"
         android:background="@drawable/round_back_primary_15"
-        android:textColor="#FFFFFF"
-        />
+        android:textColor="#FFFFFF" />
 
 
 
