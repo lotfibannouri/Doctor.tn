@@ -88,10 +88,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser user = mAuth.getCurrentUser() ;
+   /*     FirebaseUser user = mAuth.getCurrentUser() ;
         if(user == null)
         {
             startActivity(new Intent (MainActivity.this ,Login.class));
-        }
+        }*/
     }
 }

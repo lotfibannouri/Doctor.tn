@@ -17,7 +17,7 @@ public class RetrofitClient {
                     .addInterceptor(interceptor)
                     .build();
             retrofit = new Retrofit.Builder().
-                    baseUrl("http://10.0.2.2:7271/api/").
+                    baseUrl("http://10.10.10.30:7271/api/").
                     addConverterFactory(GsonConverterFactory.create()).
                     client(client).
                     build();

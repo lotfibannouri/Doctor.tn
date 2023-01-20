@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.cmproject.Models.Auth;
 import com.example.cmproject.Services.ApiInterface;
 import com.example.cmproject.Services.RetrofitClient;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -49,12 +50,15 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login .this,"tous les champs sont obligatoires",Toast.LENGTH_SHORT).show();
                 else
                 { ApiInterface apiInterface = RetrofitClient.getInstanceRetrofit().create(ApiInterface.class) ;
-                    Call<ResponseBody> call = apiInterface.Authentication(user,pass);
+                    Auth auth = new Auth(user,pass) ;
+                    Call<ResponseBody> call = apiInterface.Authentication(auth);
                     call.enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                             Toast.makeText(Login.this,"authentifié avec succés"+ response.message(),Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Login.this, MainActivity.class));
+                            if(response.isSuccessful()) {
+                                startActivity(new Intent(Login.this, MainActivity.class));
+                            }
                         }
 
                         @Override
