@@ -13,10 +13,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.cmproject.Services.ApiInterface;
+import com.example.cmproject.Services.RetrofitClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Login extends AppCompatActivity {
@@ -41,19 +48,38 @@ public class Login extends AppCompatActivity {
                 if(TextUtils.isEmpty(user) ||TextUtils.isEmpty(pass))
                     Toast.makeText(Login .this,"tous les champs sont obligatoires",Toast.LENGTH_SHORT).show();
                 else
-                {
-                    mAuth.signInWithEmailAndPassword(user,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                { ApiInterface apiInterface = RetrofitClient.getInstanceRetrofit().create(ApiInterface.class) ;
+                    Call<ResponseBody> call = apiInterface.Authentication(user,pass);
+                    call.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            Toast.makeText(Login.this,"authentifié avec succés"+ response.message(),Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Login.this, MainActivity.class));
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Toast.makeText(Login.this,"Erreur d'authentification :"+t.getMessage(),Toast.LENGTH_SHORT).show();
+                            System.out.println(t.getMessage());
+
+                        }
+                    });
+
+
+                   /* Toast.makeText(Login.this,"Utilisateur authentifié avec succés",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Login.this ,MainActivity.class));*/
+                   /* mAuth.signInWithEmailAndPassword(user,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                        if (task.isSuccessful()){
                            Toast.makeText(Login.this,"Utilisateur authentifié avec succés",Toast.LENGTH_SHORT).show();
                            startActivity(new Intent(Login.this ,MainActivity.class));
-                       }
+                      }
                        else {
                            Toast.makeText(Login.this,"Erreur d'authentification :"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                        }
                         }
-                    });
+                    });*/
 
 
 
